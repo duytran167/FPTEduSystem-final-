@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FPTEduSystem.Models.Category>
+@{
+	ViewBag.Title = "CategoryView";
+}
+
+<h2>Category View</h2>
+<br />
+@using (Html.BeginForm("CategoryView", "Staff", "POST"))
+{
+	<div class="input-group col-md-4">
+		@Html.TextBox("searchString", null, new { @type = "text", @class = "form-control ", @placeholder = "Search trainee" })
+		<button type="submit" class="btn btn-light">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</div>
+}
+<br />
+@Html.ActionLink("Back To Course", "CourseManagement", "Staff", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Create", "CreateCategory", "Staff", null, new { @class = "btn btn-success" })
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">Category</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+
+			<tr>
+				<td scope="row">@item.Id</td>
+				<td scope="row">@item.CategoryName</td>
+				<td scope="row">
+					@Html.ActionLink("Delete", "DeleteCategory", "Staff",
+										new { id = item.Id },
+										new { @class = "btn btn-danger" })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

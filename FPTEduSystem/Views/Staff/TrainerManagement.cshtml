@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FPTEduSystem.Models.ApplicationUser>
+@{
+	ViewBag.Title = "TrainerManagement";
+}
+
+<h2>Trainer Management</h2>
+@Html.ActionLink("Back", "Index", "Staff", null, new { @class = "btn btn-primary" })
+<br />
+<br />
+@using (Html.BeginForm("TrainerManagement", "Staff", "POST"))
+{
+	<div class="input-group col-md-4">
+		@Html.TextBox("searchString", null, new { @type = "text", @class = "form-control ", @placeholder = "Search trainer" })
+		<button type="submit" class="btn btn-light">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</div>
+}
+<br />
+<br />
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">User Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.UserName</td>
+				<td>@item.Email</td>
+				<td>
+					@Html.ActionLink("Update", "UpdateTrainer", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-success" })
+					@Html.ActionLink("Detail", "DetailsTrainer", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-info" })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

@@ -1,0 +1,25 @@
+﻿@model FPTEduSystem.Models.Staff
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		@Html.Label("Name: ")
+		<h3 class="panel-title">@Model.Name</h3>
+	</div>
+	<div class="panel-body">
+		@Html.Label("UserName: ")
+		@Model.UserName
+	</div>
+	<div class="panel-body">
+		@Html.Label("Id: ")
+		@Model.Id
+	</div>
+	<div class="panel-body">
+		@Html.Label("Email: ")
+		<h3 class="panel-title">@Model.Email</h3>
+	</div>
+
+</div>

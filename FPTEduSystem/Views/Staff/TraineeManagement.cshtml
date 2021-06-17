@@ -1,0 +1,53 @@
+﻿@model IEnumerable<FPTEduSystem.Models.ApplicationUser>
+@{
+	ViewBag.Title = "TraineeManagement";
+}
+
+<h2>Trainee Management</h2>
+
+@Html.ActionLink("Back", "Index", "Staff", null, new { @class = "btn btn-primary" })
+<br />
+<br />
+@using (Html.BeginForm("TraineeManagement", "Staff", "POST"))
+{
+	<div class="input-group col-md-4">
+		@Html.TextBox("searchString", null, new { @type = "text", @class = "form-control ", @placeholder = "Search trainee" })
+		<button type="submit" class="btn btn-light">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</div>
+}
+<br />
+@Html.ActionLink("Create a new account", "Register", "Account", null, new { @class = "btn btn-success" })
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">User Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.UserName</td>
+				<td>@item.Email</td>
+				<td>
+					@Html.ActionLink("Delete", "DeleteTrainee", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-danger" })
+					@Html.ActionLink("Update", "UpdateTrainee", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-success" })
+					@Html.ActionLink("Detail", "DetailsTrainee", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-info" })
+
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

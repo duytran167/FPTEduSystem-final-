@@ -1,0 +1,37 @@
+﻿@model FPTEduSystem.Models.Trainer
+@{
+	ViewBag.Title = "DetailsTrainer";
+}
+
+<h2>Details Trainer</h2>
+@Html.ActionLink("Back", "TrainerManagement", "Staff", null, new { @class = "btn btn-primary" })
+<div class="panel panel-info">
+	<div class="panel-heading">
+		@Html.Label("Name: ")
+		<h3 class="panel-title">@Model.Name</h3>
+	</div>
+	<div class="panel-body">
+		@Html.Label("Email: ")
+		@Model.Email
+	</div>
+	<div class="panel-body">
+		@Html.Label("UserName: ")
+		@Model.UserName
+	</div>
+	<div class="panel-body">
+		@Html.Label("Education: ")
+		@Model.Education
+	</div>
+	<div class="panel-body">
+		@Html.Label("Work Place: ")
+		@Model.WorkPlace
+	</div>
+	<div class="panel-body">
+		@Html.Label("Telephone: ")
+		@Model.Telephone
+	</div>
+	<div class="panel-body">
+		@Html.Label("Type: ")
+		@Model.Type
+	</div>
+</div>

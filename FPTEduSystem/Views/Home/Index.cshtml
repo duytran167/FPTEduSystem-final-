@@ -1,0 +1,32 @@
+﻿
+@using Microsoft.AspNet.Identity
+@{
+	ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+	<h1>Welcome To FPT System Education</h1>
+	@if (User.IsInRole("admin"))
+	{
+		<h2>Hello Admin</h2>
+	}
+	@if (User.IsInRole("staff"))
+	{
+		<h2>Welcome Staff</h2>
+	}
+	@if (User.IsInRole("trainer"))
+	{
+		<h2>Welcome Trainer</h2>
+	}
+	@if (User.IsInRole("trainee"))
+	{
+		<h2>Welcome Trainee</h2>
+	}
+	@if (Request.IsAuthenticated)
+	{
+		<p>Username: @User.Identity.GetUserName()</p>
+	}
+	<p class="lead">An Application build with asp.net</p>
+
+
+</div>

@@ -1,0 +1,37 @@
+﻿@model FPTEduSystem.ViewModel.CategoryCourseViewModel
+@{
+	ViewBag.Title = "DetailCourse";
+}
+
+<h2>Detail Course</h2>
+@if (User.IsInRole("staff"))
+{
+	@Html.ActionLink("Back to Index", "CourseManagement", "Staff", null, new { @class = "btn btn-primary" })
+}
+@if (User.IsInRole("trainee"))
+{
+	@Html.ActionLink("Back", "AllCourse", "Trainee", null, new { @class = "btn btn-primary" })
+}
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		@Html.Label("Course Name:")
+		<h3 class="panel-title">@Model.Course.CourseName</h3>
+	</div>
+
+	<div class="panel-body">
+		@Html.Label("Course ID:")
+		@Model.Course.Id
+	</div>
+
+	<div class="panel-body">
+		@Html.Label("Course Detail:")
+		@Model.Course.Detail
+	</div>
+
+	<div class="panel-body">
+		@Html.Label("Category:")
+		@Model.Course.Category.CategoryName
+	</div>
+</div>

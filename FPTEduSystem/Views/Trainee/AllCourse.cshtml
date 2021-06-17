@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FPTEduSystem.Models.Course>
+@{
+	ViewBag.Title = "AllCourse";
+}
+
+<h2>All Course</h2>
+@Html.ActionLink("Back", "Index", "Trainee", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Course Asigned", "CourseAssign", "Trainee", null, new { @class = "btn btn-success" })
+<h1> </h1>
+@using (Html.BeginForm("AllCourse", "Trainee", "POST"))
+{
+	<div class="input-group col-md-4">
+		@Html.TextBox("searchString", null, new { @type = "text", @class = "form-control ", @placeholder = "Search trainee" })
+		<button type="submit" class="btn btn-light">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</div>
+}
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Course</th>
+			<th scope="col">Category</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.CourseName</td>
+				<td>@item.Category.CategoryName</td>
+
+			</tr>
+		}
+	</tbody>
+</table>

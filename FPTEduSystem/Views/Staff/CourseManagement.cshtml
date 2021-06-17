@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FPTEduSystem.Models.Course>
+@{
+	ViewBag.Title = "CourseManagement";
+}
+
+<h2>Course Management</h2>
+
+@Html.ActionLink("Back", "Index", "Staff", null, new { @class = "btn btn-primary" })
+<h1> </h1>
+@using (Html.BeginForm("CourseManagement", "Staff", "POST"))
+{
+	<div class="input-group col-md-4">
+		@Html.TextBox("searchString", null, new { @type = "text", @class = "form-control ", @placeholder = "Search course" })
+		<button type="submit" class="btn btn-light">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+	</div>
+}
+<br />
+
+@Html.ActionLink("Create Course", "CreateCourse", "Staff", null, new { @class = "btn btn-success" })
+@Html.ActionLink("Category Management", "CategoryView", "Staff", null, new { @class = "btn btn-warning" })
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Course</th>
+			<th scope="col">Category</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.CourseName</td>
+				<td>@item.Category.CategoryName</td>
+				<td>
+					@Html.ActionLink("Edit", "EditCourse", "Staff",
+											 new { id = item.Id },
+											 new { @class = "btn btn-warning" })
+					@Html.ActionLink("Delete", "DeleteCourse", "Staff",
+											 new { id = item.Id },
+											 new { @class = "btn btn-danger" })
+					@Html.ActionLink("Details", "DetailCourse", "Staff",
+											 new { id = item.Id },
+											 new { @class = "btn btn-primary" })
+					@Html.ActionLink("Assign", "Assign", "Staff",
+											 new { id = item.Id },
+											 new { @class = "btn btn-success" })
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
