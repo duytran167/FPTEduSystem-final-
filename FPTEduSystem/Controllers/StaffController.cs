@@ -254,6 +254,26 @@ namespace FPTEduSystem.Controllers
       _context.SaveChanges();
       return RedirectToAction("CategoryView");
     }
+    [HttpGet]
+    public ActionResult EditCategory(int id)
+    {
+      var category = _context.Categories.SingleOrDefault(t => t.Id == id);
+      var categories = new Category()
+      {
+        Id = id,
+        CategoryName = category.CategoryName
+      };
+      return View(categories);
+    }
+    [HttpPost]
+    public ActionResult EditCategory(Category viewModel)
+    {
+      var category = _context.Categories.SingleOrDefault(t => t.Id == viewModel.Id);
+      category.CategoryName = viewModel.CategoryName;
+      
+      _context.SaveChanges();
+      return RedirectToAction("CategoryView", "Staff");
+    }
     // assign trainee and trainer
     public ActionResult Assign(int id)
     {

@@ -137,6 +137,7 @@ namespace FPTEduSystem.Controllers
 
     //
     // GET: /Account/Register
+    [HttpGet]
     [Authorize(Roles = "admin,staff")]
     public ActionResult Register()
     {

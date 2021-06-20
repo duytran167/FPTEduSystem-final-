@@ -100,6 +100,7 @@ namespace FPTEduSystem.Controllers
       _context.SaveChanges();
       return RedirectToAction("Index", "Admin");
     }
+    [HttpGet]
     public ActionResult ChangePassword(string id)
     {
       var user = _context.Users.FirstOrDefault(model => model.Id == id);

@@ -216,6 +216,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AssignViewModel.cs" />
     <Compile Include="ViewModel\CategoryCourseViewModel.cs" />
+    <Compile Include="ViewModel\UserRoleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Trainee\Index.cshtml" />
     <Content Include="Views\Trainee\AllCourse.cshtml" />
     <Content Include="Views\Trainee\CourseAssign.cshtml" />
+    <Content Include="Views\Staff\EditCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
