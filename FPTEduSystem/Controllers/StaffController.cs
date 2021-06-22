@@ -150,6 +150,13 @@ namespace FPTEduSystem.Controllers
       var trainer = _context.Users.SingleOrDefault(t => t.Id == id);
       return View(trainer);
     }
+    public ActionResult DeleteTrainer(string id)
+    {
+      var removeTrainer = _context.Users.SingleOrDefault(t => t.Id == id);
+      _context.Users.Remove(removeTrainer);
+      _context.SaveChanges();
+      return RedirectToAction("TrainerManagement");
+    }
     //course manage
     public ActionResult CourseManagement(string searchString)
     {
@@ -196,14 +203,14 @@ namespace FPTEduSystem.Controllers
 
     public ActionResult EditCourse(int id)
     {
-      var fcourse = _context.Courses.SingleOrDefault(t => t.Id == id);
-      var dcourse = new ViewModel.CategoryCourseViewModel()
+      var course = _context.Courses.SingleOrDefault(t => t.Id == id);
+      var courses = new ViewModel.CategoryCourseViewModel()
       {
         Id = id,
-        Course = fcourse,
+        Course = course,
         Categories = _context.Categories.ToList()
       };
-      return View(dcourse);
+      return View(courses);
     }
     [HttpPost]
     public ActionResult EditCourse(ViewModel.CategoryCourseViewModel viewModel)

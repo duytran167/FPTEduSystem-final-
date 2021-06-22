@@ -27,6 +27,7 @@ namespace FPTEduSystem.Controllers
       var displayuser = _usermanager.Users.Where(t => t.Roles.Any(m => m.RoleId == "2" || m.RoleId == "3") == true).ToList();
       return View(displayuser);
     }
+    
     public ActionResult StaffView()
     {
       var staff = _context.Users.Where(t => t.Roles.Any(m => m.RoleId == "2")).ToList();

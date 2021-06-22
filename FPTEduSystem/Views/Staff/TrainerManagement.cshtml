@@ -41,6 +41,9 @@
 					@Html.ActionLink("Detail", "DetailsTrainer", "Staff",
 											new { id = item.Id },
 											new { @class = "btn btn-info" })
+					@Html.ActionLink("Delete", "DeleteTrainer", "Staff",
+											new { id = item.Id },
+											new { @class = "btn btn-danger" })
 				</td>
 			</tr>
 		}
