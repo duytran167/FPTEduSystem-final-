@@ -71,5 +71,15 @@ namespace FPTEduSystem.Controllers
           .ToList();
       return View(courseAssign);
     }
+    public ActionResult DepartmentAssign()
+    {
+      var trainerId = User.Identity.GetUserId();
+      var dpartmentAssign = _context.TrainerDepartments
+          .Where(t => t.TrainerId == trainerId)
+          .Select(t => t.Department)
+          
+          .ToList();
+      return View(dpartmentAssign);
+    }
   }
 }

@@ -427,6 +427,7 @@
     <Content Include="Views\Staff\DetailDepartment.cshtml" />
     <Content Include="Views\Staff\AssignDepartment.cshtml" />
     <Content Include="Views\Staff\AssignTrainerDepartment.cshtml" />
+    <Content Include="Views\Trainer\DepartmentAssign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

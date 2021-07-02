@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FPTEduSystem.Models.Department>
+@{
+	ViewBag.Title = "DepartmentAssign";
+}
+
+<h2>DepartmentAssign</h2>
+@Html.ActionLink("Back", "Index", "Trainer", null, new { @class = "btn btn-primary" })
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Department</th>
+			<th scope="col">Detail</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.DepartmentName</td>
+				<td>@item.Detail</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
