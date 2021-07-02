@@ -1,0 +1,27 @@
+﻿@model FPTEduSystem.ViewModel.AssignDepartmentViewModel
+@{
+	ViewBag.Title = "AssignTrainerDepartment";
+}
+
+<h2>Assign Trainer Department</h2>
+@Html.ActionLink("Back", "AssignDepartment", "Staff", new { @id = Model.Department.Id }, new { @class = "btn btn-primary" })
+<br />
+<br />
+<div class="form-group">
+	@using (Html.BeginForm("AssignTrainerDepartment", "Staff", "POST"))
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary("", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.Label("Trainer", new { @class = "text-default" })
+			@Html.DropDownListFor(m => m.TrainerId, new SelectList(Model.Trainers, "Id", "Name"), new { @class = "btn btn-info dropdown-toggle" })
+			@Html.ValidationMessageFor(m => m.TrainerId, " * not same name", new { @class = "text-danger" })
+		</div>
+		<div class="form-group">
+			@Html.HiddenFor(t => t.Department.Id)
+		</div>
+		<br />
+		<input type="submit" class="btn btn-success" value="Assign" />
+	}
+</div>
+

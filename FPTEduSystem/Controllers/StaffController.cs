@@ -277,7 +277,7 @@ namespace FPTEduSystem.Controllers
     {
       var category = _context.Categories.SingleOrDefault(t => t.Id == viewModel.Id);
       category.CategoryName = viewModel.CategoryName;
-      
+
       _context.SaveChanges();
       return RedirectToAction("CategoryView", "Staff");
     }
@@ -363,6 +363,118 @@ namespace FPTEduSystem.Controllers
       _context.TrainerCourses.Remove(trainerCourse);
       _context.SaveChanges();
       return RedirectToAction("Assign", "Staff", new { @id = trainerCourse.CourseId });
+    }
+    //department for trainer
+    public ActionResult DepartmentManagement(string searchString)
+    {
+      var department = _context.Departments.ToList();
+      if (!String.IsNullOrWhiteSpace(searchString))
+      {
+        department = _context.Departments
+        .Where(t => t.DepartmentName.Contains(searchString))
+        
+        .ToList();
+      }
+      return View(department);
+
+    }
+    [HttpGet]
+    public ActionResult CreateDepartment()
+    {
+      return View();
+    }
+    [HttpPost]
+    public ActionResult CreateDepartment(Department department)
+    {
+      var create_department = new Department() 
+      { 
+        DepartmentName = department.DepartmentName,
+        Detail = department.Detail
+      };
+      _context.Departments.Add(create_department);
+      _context.SaveChanges();
+      return RedirectToAction("DepartmentManagement");
+    }
+    [HttpGet]
+    public ActionResult EditDepartment(int id)
+    {
+      var department = _context.Departments.SingleOrDefault(t => t.Id == id);
+      var departments = new Department()
+      {
+        Id = id,
+        DepartmentName = department.DepartmentName,
+        Detail = department.Detail
+      };
+      return View(departments);
+    }
+    [HttpPost]
+    public ActionResult EditDepartment(Department viewModel)
+    {
+      var department = _context.Departments.SingleOrDefault(t => t.Id == viewModel.Id);
+      department.DepartmentName = viewModel.DepartmentName;
+      department.Detail = viewModel.Detail;
+
+      _context.SaveChanges();
+      return RedirectToAction("DepartmentManagement", "Staff");
+    }
+    public ActionResult DeleteDepartment(int id)
+    {
+      var removeDepartment = _context.Departments.SingleOrDefault(t => t.Id == id);
+      _context.Departments.Remove(removeDepartment);
+      _context.SaveChanges();
+      return RedirectToAction("DepartmentManagement");
+    }
+    public ActionResult DetailDepartment(int id)
+    
+    {
+      var department = _context.Departments.SingleOrDefault(t => t.Id == id);
+      return View(department);
+    }
+    public ActionResult AssignDepartment(int id)
+    {
+      var assign = new ViewModel.AssignDepartmentViewModel()
+      {
+        
+        TrainerDepartment = _context.TrainerDepartments.Where(t => t.DepartmentId == id).Include(t => t.Trainer).ToList(),
+        Department = _context.Departments.FirstOrDefault(t => t.Id == id)
+      };
+
+      return View(assign);
+    }
+    [HttpGet]
+    public ActionResult AssignTrainerDepartment(int id)
+    {
+      var assignModel = new ViewModel.AssignDepartmentViewModel()
+      {
+        Department = _context.Departments.SingleOrDefault(t => t.Id == id),
+        Trainers = _context.Users.OfType<Trainer>().ToList(),
+      };
+
+      return View(assignModel);
+    }
+    [HttpPost]
+    public ActionResult AssignTrainerDepartment(ViewModel.AssignDepartmentViewModel model)
+    {
+      var trainerDepartment = new TrainerDepartment()
+      {
+        TrainerId = model.TrainerId,
+        DepartmentId = model.Department.Id,
+      };
+      if (_context.TrainerDepartments.Any(t => t.DepartmentId == model.Department.Id && t.TrainerId == model.TrainerId))
+      {
+        ModelState.AddModelError("Validation", "Existed before");
+        return View(model);
+      }
+      _context.TrainerDepartments.Add(trainerDepartment);
+      _context.SaveChanges();
+      return RedirectToAction("AssignDepartment", "Staff", new { @id = model.Department.Id });
+    }
+    public ActionResult RemoveTrainerDepartment(int id)
+    {
+      var trainerDepartment = _context.TrainerDepartments.SingleOrDefault(t => t.Id == id);
+      _context.TrainerDepartments.Remove(trainerDepartment);
+      _context.SaveChanges();
+      return RedirectToAction("AssignDepartment", "Staff", new { @id = trainerDepartment.DepartmentId });
     }
 
   }

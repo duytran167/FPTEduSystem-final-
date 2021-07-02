@@ -29,6 +29,8 @@ namespace FPTEduSystem.Models
     public DbSet<Course> Courses { get; set; }
     public DbSet<TraineeCourse> TraineeCourses { get; set; }
     public DbSet<TrainerCourse> TrainerCourses { get; set; }
+    public DbSet<Department> Departments { get; set; }
+    public DbSet<TrainerDepartment> TrainerDepartments { get; set; }
     public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
