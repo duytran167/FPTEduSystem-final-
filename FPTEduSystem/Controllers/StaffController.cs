@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace FPTEduSystem.Controllers
 {
-  [Authorize(Roles = "staff")]
+  [Authorize(Roles = "Staff")]
   public class StaffController : Controller
 
   {

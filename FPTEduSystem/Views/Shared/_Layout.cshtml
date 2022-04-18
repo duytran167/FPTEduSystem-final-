@@ -24,7 +24,7 @@
 					@if (Request.IsAuthenticated)
 					{
 
-						if (User.IsInRole("admin"))
+						if (User.IsInRole("Admin"))
 						{
 							<li>@Html.ActionLink("Admin", "Index", "Admin")</li>
 							<li>@Html.ActionLink("Manage Staff", "StaffView", "Admin")</li>
@@ -32,7 +32,7 @@
 
 
 						}
-						if (User.IsInRole("staff"))
+						if (User.IsInRole("Staff"))
 						{
 							<li>@Html.ActionLink("Trainer", "TrainerManagement", "Staff")</li>
 							<li>@Html.ActionLink("Trainee", "TraineeManagement", "Staff")</li>
@@ -46,7 +46,7 @@
 
 
 						}
-						if (User.IsInRole("trainer"))
+						if (User.IsInRole("Trainer"))
 						{
 							<li>@Html.ActionLink("Trainer", "Index", "Trainer")</li>
 							<li>@Html.ActionLink("All Course", "CourseAssign", "Trainer")</li>
@@ -54,7 +54,7 @@
 
 
 						}
-						if (User.IsInRole("trainee"))
+						if (User.IsInRole("Trainee"))
 						{
 							<li>@Html.ActionLink("Trainee", "Index", "Trainee")</li>
 							<li>@Html.ActionLink("All Course", "AllCourse", "Trainee")</li>
