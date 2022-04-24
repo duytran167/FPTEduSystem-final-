@@ -212,11 +212,14 @@
     <Compile Include="Migrations\202107020947437_AddTrainerDepartmentModel.designer.cs">
       <DependentUpon>202107020947437_AddTrainerDepartmentModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204191536522_removeDepartment.cs" />
+    <Compile Include="Migrations\202204191536522_removeDepartment.designer.cs">
+      <DependentUpon>202204191536522_removeDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Courses.cs" />
-    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -224,10 +227,8 @@
     <Compile Include="Models\TraineeCourse.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\TrainerCourse.cs" />
-    <Compile Include="Models\TrainerDepartment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\AssignDepartmentViewModel.cs" />
     <Compile Include="ViewModel\AssignViewModel.cs" />
     <Compile Include="ViewModel\CategoryCourseViewModel.cs" />
     <Compile Include="ViewModel\UserRoleViewModel.cs" />
@@ -421,13 +422,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Staff\DepartmentManagement.cshtml" />
-    <Content Include="Views\Staff\CreateDepartment.cshtml" />
-    <Content Include="Views\Staff\EditDepartment.cshtml" />
-    <Content Include="Views\Staff\DetailDepartment.cshtml" />
-    <Content Include="Views\Staff\AssignDepartment.cshtml" />
-    <Content Include="Views\Staff\AssignTrainerDepartment.cshtml" />
-    <Content Include="Views\Trainer\DepartmentAssign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -461,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107020947437_AddTrainerDepartmentModel.resx">
       <DependentUpon>202107020947437_AddTrainerDepartmentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204191536522_removeDepartment.resx">
+      <DependentUpon>202204191536522_removeDepartment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

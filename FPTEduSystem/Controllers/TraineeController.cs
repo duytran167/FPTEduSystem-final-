@@ -28,6 +28,7 @@ namespace FPTEduSystem.Controllers
 			var trainee = _context.Users.OfType<Trainee>().SingleOrDefault(t => t.Id == traineeId);
 			return View(trainee);
 		}
+		// list tat ca cac course
 		public ActionResult AllCourse(string searchString)
 		{
 			var allCourse = _context.Courses.Include(t => t.Category).ToList();
@@ -40,6 +41,7 @@ namespace FPTEduSystem.Controllers
 			}
 			return View(allCourse);
 		}
+		// list course da duoc assign
 		public ActionResult CourseAssign()
 		{
 			var traineeId = User.Identity.GetUserId();

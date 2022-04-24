@@ -27,6 +27,7 @@ namespace FPTEduSystem.Controllers
 			var trainer = _context.Users.OfType<Trainer>().SingleOrDefault(t => t.Id == ftrainerId);
 			return View(trainer);
 		}
+		//edit trainer
 		public ActionResult EditTrainer()
 		{
 			var trainerId = User.Identity.GetUserId();
@@ -58,6 +59,7 @@ namespace FPTEduSystem.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("Index", "Trainer");
 		}
+		// trang course ma da duoc assign vao
 		public ActionResult CourseAssign()
 		{
 			var trainerId = User.Identity.GetUserId();
@@ -68,15 +70,6 @@ namespace FPTEduSystem.Controllers
 					.ToList();
 			return View(courseAssign);
 		}
-		public ActionResult DepartmentAssign()
-		{
-			var trainerId = User.Identity.GetUserId();
-			var dpartmentAssign = _context.TrainerDepartments
-					.Where(t => t.TrainerId == trainerId)
-					.Select(t => t.Department)
 
-					.ToList();
-			return View(dpartmentAssign);
-		}
 	}
 }

@@ -24,15 +24,16 @@ namespace FPTEduSystem.Controllers
 			var displayuser = _usermanager.Users.Where(t => t.Roles.Any(m => m.RoleId == "2" || m.RoleId == "3") == true).ToList();
 			return View(displayuser);
 		}
-
+		// list staff
 		public ActionResult StaffView()
 		{
 			var staff = _context.Users.Where(t => t.Roles.Any(m => m.RoleId == "2")).ToList();
 			return View(staff);
 		}
+		//list trainer
 		public ActionResult TrainerView()
 		{
-			var trainer = _context.Users.Where(t => t.Roles.Any(m => m.RoleId == "3")).ToList();
+			var trainer = _context.Users.Where(t => t.Roles.Any(m => m.RoleId == "4")).ToList();
 			return View(trainer);
 		}
 		//delete User
@@ -43,6 +44,7 @@ namespace FPTEduSystem.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("");
 		}
+		//update staff
 		[HttpGet]
 		public ActionResult UpdateStaff(string id)
 		{
@@ -68,6 +70,7 @@ namespace FPTEduSystem.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("Index", "Admin");
 		}
+		//update trainer
 		[HttpGet]
 		public ActionResult UpdateTrainer(string id)
 		{
@@ -98,6 +101,7 @@ namespace FPTEduSystem.Controllers
 			_context.SaveChanges();
 			return RedirectToAction("Index", "Admin");
 		}
+		// change password by admin
 		[HttpGet]
 		public ActionResult ChangePassword(string id)
 		{
